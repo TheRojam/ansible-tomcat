@@ -1,6 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# inculde variablesfiles
+#
+require vagrant.rb
+include MyVars
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -23,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # argument is a set of non-required options.
     # config.vm.synced_folder "../data", "/vagrant_data"
     tomcat.vm.synced_folder '.', '/var/vagrant'
-    tomcat.vm.synced_folder '/home/anmueller/tomcat', '/var/tomcat/webapps'
+    tomcat.vm.synced_folder '/home/'USERNAME'/tomcat', '/var/tomcat/webapps'
 
     tomcat.vm.provision :ansible do |ansible|
       ansible.groups = {
